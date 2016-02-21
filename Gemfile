@@ -29,7 +29,11 @@ gem 'carrierwave'
 # Fancy form
 gem 'bootstrap_form'
 # Css & Js library
-gem 'bootstrap-sass'
+gem 'bootstrap-sass' 
+# Hook locally mail 
+# Run deamon by call him in termilal like so : maicatcher
+# Then go  http://127.0.0.1:1080
+gem 'mailcatcher'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
