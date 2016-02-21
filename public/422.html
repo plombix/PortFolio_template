@@ -4,64 +4,561 @@
   <title>The change you wanted was rejected (422)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Dosis Regular'), local('Dosis-Regular'), url(http://themes.googleusercontent.com/static/fonts/dosis/v1/xIAtSaglM8LZOYdGmG1JqQ.woff) format('woff');
+}
 
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  background: #EEE;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  color: #bbb;
+}
 
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+#wrap {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+#body .game_area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 480px;
+  height: 480px;
+  margin-left: -240px;
+  margin-top: -240px;
+  border-radius: 10px;
+  background: #FCFCFC;
+  box-shadow: 0px 0px 8px #777 inset;
+}
+#body .block {
+  position: relative;
+  float: left;
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
+}
+#body .line {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: #dedede;
+}
+#body #line0 {
+  width: 450px;
+  top: 155px;
+  left: 15px;
+}
+#body #line1 {
+  width: 450px;
+  top: 315px;
+  left: 15px;
+}
+#body #line2 {
+  height: 450px;
+  left: 157px;
+  top: 15px;
+}
+#body #line3 {
+  height: 450px;
+  left: 317px;
+  top: 15px;
+}
 
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+.o {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  margin-left: -60px;
+  margin-top: -60px;
+  border: 10px solid #4ad52e;
+  border-radius: 100px;
+}
+.x {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -60px;
+  margin-top: -60px;
+  width: 120px;
+  height: 120px;
+}
+.x:before {
+  position: absolute;
+  top: -20px;
+  left: 55px;
+  content: "";
+  display: block;
+  width: 10px;
+  height: 160px;
+  background: #488fda;
+  border-radius: 5px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+}
+.x:after {
+  position: absolute;
+  top: -20px;
+  left: 55px;
+  content: "";
+  display: block;
+  width: 10px;
+  height: 160px;
+  background: #488fda;
+  border-radius: 5px; 
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
 
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+#start_screen, #end_screen {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+#select_box, #end_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  height: 160px;
+  padding: 20px;
+  margin-left: -190px;
+  margin-top: -100px;
+  background: #FFF;
+  border-radius: 10px;
+  box-shadow: 0 0 30px #666;
+}
+#select_box .current {
+  border-bottom: 5px solid #ddd;
+}
+#selectO, #selectX {
+  position: relative;
+  float: left;
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
+}
+#selectO {
+  margin-right: 20px;
+}
+.info_bubble {
+  position: absolute;
+  padding: 0 15px;
+  background: #FFF;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+.info_bubble:before {
+  position: absolute;
+  width: 0;
+  height: 0;
+  content: "";
+  border: 15px solid transparent; 
+}
+#info_1 { 
+  right: 0px;
+  top: -100px;
+}
+#info_1:before {
+  left: 20px;
+  bottom: -30px;
+  border-top-color: #FFF;
+}
+#info_2 {
+  left: 0px;
+  bottom: -100px;
+}
+#info_2:before {
+  top: -30px;
+  right: 80px;
+  border-bottom-color: #FFF;
+} 
+
+#end_screen {
+  display: none;
+}
+#end_box #end_info{
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 160px;
+}
+#end_box .circle {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: -60px;
+  border: 10px solid #feb323;
+  border-radius: 100px;
+}
+#end_screen #btn_restart {
+  right: -240px;
+  top: 66px;
+  cursor: pointer;
+}
+
   </style>
 </head>
 
 <body>
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
+<div id="wrap">
+  <div id="body">
+    <div class="game_area">
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div class="block"></div>
+      <div id="a" class="block"></div>
+      <div id="line0" class="line"></div>
+      <div id="line1" class="line"></div>
+      <div id="line2" class="line"></div>
+      <div id="line3" class="line"></div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+  <div id="start_screen">
+    <div id="select_box">
+      <div id="selectO">
+        <div class="o"></div>
+      </div>
+      <div id="selectX">
+        <div class="x"></div>
+      </div>
+      <div class="info_bubble" id="info_1">first</div>
+      <div class="info_bubble" id="info_2">choose one</div>
+    </div>
+  </div>
+  <div id="end_screen">
+    <div id="end_box">
+      <div id="end_info"></div>
+      <div class="circle"></div>
+      <div class="info_bubble" id="btn_restart">restart</div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
+<script>
+  window.onload = function() {
+  var oUi = new GameUi();
+  var oCtrl = new GameCtrl(oUi);
+  oUi.setCtrl(oCtrl);
+  oCtrl.startGame();
+}
+
+/*----------------------------------------*/
+
+/*my little tool*/
+var Tool = {
+  getE: function(/*string*/sName) {
+    var sType = sName[0];
+    sName = sName.split(sType)[1];
+    switch(sType) {
+      case '#':
+        return document.getElementById(sName);
+      case '.':
+        var aResult = new Array();
+        var aObj = document.getElementsByTagName('*');
+        for(var i = aObj.length - 1; i >= 0; i--) {
+          if(aObj[i].className && aObj[i].className.indexOf(sName) != -1) {
+            aResult.push(aObj[i]);
+          }
+        }
+        return aResult;
+      default:
+        return document.getElementsByTagName(sName);
+    }
+  }
+};
+
+/*---------------------------------------*/
+function GameUi() {
+  var oCtrl,
+    aBlocks,
+    sPlayerStyle,
+    sAiStyle;
+
+  var init = function() {
+      aBlocks = Tool.getE('.block');
+    },
+    startGame = function() {
+      clean();
+      startScreen();
+    },
+    startScreen = function() {
+      var oScreen = Tool.getE('#start_screen');
+        selectO = Tool.getE('#selectO'),
+        selectX = Tool.getE('#selectX');
+      oScreen.style['display'] = 'block';
+      selectX.onmouseover = function() {
+        selectO.className = '';
+        this.className = 'current';
+      }
+      selectO.onmouseover = function() {
+        selectX.className = '';
+        this.className = 'current';
+      }
+      selectX.onclick = function() {
+        sPlayerStyle = 'x';
+        sAiStyle = 'o';
+        oScreen.style['display'] = 'none';
+        setupListener();
+      }
+      selectO.onclick = function() {
+        sPlayerStyle = 'o';
+        sAiStyle = 'x';
+        oScreen.style['display'] = 'none';
+        oCtrl.nextStep();
+        setupListener();
+      }
+    },
+    setupListener = function() {
+      for (var i = aBlocks.length - 1; i >= 0; i--) {
+        (function(index) {
+          aBlocks[index].onclick = function() {
+            if (aBlocks[index].innerHTML != '') return;
+            draw('player', index);
+            oCtrl.setChessboard(index, -1);
+            oCtrl.nextStep();
+          }
+        })(i);
+      }
+    },
+    endGame = function() {
+      endScreen();
+    },
+    endScreen = function() {
+      var oScreen = Tool.getE('#end_screen');
+      var oEndInfo = Tool.getE('#end_info');
+      switch(oCtrl.getWinner()) {
+        case 'ai':
+          oEndInfo.innerHTML = 'LOST';
+          break;
+        case 'player':
+          oEndInfo.innerHTML = 'WIN';
+          break;
+        case 'no':
+          oEndInfo.innerHTML = 'ITE';
+          break;
+      }
+      oScreen.style['display'] = 'block';
+      var btnRestart = Tool.getE('#btn_restart');
+      btnRestart.onclick = function() {
+        oScreen.style['display'] = 'none';
+        oCtrl.startGame();
+      }
+    },
+    draw = function(/*string*/role, /*num*/index) {
+      var obj = aBlocks[index];
+      switch (role) {
+        case 'ai':
+          obj.innerHTML = '<div class="' + sAiStyle +'"></div>';
+          break;
+        case 'player':
+          obj.innerHTML = '<div class="' + sPlayerStyle +'"></div>';
+          break;
+        default:
+          break;
+      }
+    },
+    clean = function() {
+      for (var i = aBlocks.length - 1; i >= 0; i--) {
+        aBlocks[i].innerHTML = '';
+      }
+    };
+  init();
+
+  return {
+    setCtrl: function(_oCtrl) {
+      oCtrl = _oCtrl;
+    },
+    startGame: function() {
+      startGame();
+    },
+    endGame: function() {
+      endGame();
+    },
+    draw: function(/*string*/role, /*obj*/obj) {
+      draw(/*string*/role, /*obj*/obj);
+    }
+  }
+}
+
+/*-----------------------------------*/
+
+function GameCtrl(/*obj*/_oUi) {
+  var oUi,
+    winner,
+    aChessboard,
+    aWinCondition;
+
+  var init = function() {
+      oUi = _oUi;
+      aChessboard = [0,0,0,0,0,0,0,0,0],
+      aWinCondition = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    },
+    checkOver = function() {
+      for (var i = aWinCondition.length - 1; i >= 0; i--) {
+        if (aChessboard[aWinCondition[i][0]] + aChessboard[aWinCondition[i][1]] + aChessboard[aWinCondition[i][2]] == 3) {
+          winner = 'ai';
+          oUi.endGame();
+          return true;
+        }
+        if (aChessboard[aWinCondition[i][0]] + aChessboard[aWinCondition[i][1]] + aChessboard[aWinCondition[i][2]] == -3) {
+          winner = 'player';
+          oUi.endGame();
+          return true;
+        }
+      }
+      var count = 0;
+      for (var i = aWinCondition.length - 1; i >= 0; i--) {
+        if (aChessboard[i] != 0) count++;
+      }
+      if (count == 8) {
+        winner = 'no';
+        oUi.endGame();
+        return true;
+      }
+      return false;
+    },
+    nextStep = function() {
+      if (!checkOver()) {
+        var nMax = null, nMaxSub, aChessboards = new Array();
+        for (var i = 8; i >= 0; i--) {
+          
+          for (var i2 = 8; i2 >= 0; i2--) {
+            if (aChessboard[i2] != 0) continue;
+            aChessboard[i2] = 1;
+            for (var k = aWinCondition.length - 1; k >= 0; k--) {
+              if (aChessboard[aWinCondition[k][0]] + aChessboard[aWinCondition[k][1]] + 
+                aChessboard[aWinCondition[k][2]] == 3) {
+                //aChessboard[i] = 1;//change chessboard
+                console.log(i2)
+                oUi.draw('ai', i2);
+                checkOver();
+                return;
+              }
+            }
+            aChessboard[i2] = 0;
+          }
+
+          if (aChessboard[i] != 0) continue;
+          aChessboard[i] = 1;
+          /*if(checkSame(aChessboards, aChessboard)) {
+            break;
+          } else {
+            aChessboards.push(aChessboard);
+          }*/
+
+          var aTempCb = aChessboard.concat();
+          var nMin = null;
+          var aTempCbs = new Array();
+          for (var j = 8; j >= 0; j--) {
+            if (aTempCb[j] != 0) continue;
+            aTempCb[j] = -1;//guess
+            for (var k = aWinCondition.length - 1; k >= 0; k--) {
+              if (aTempCb[aWinCondition[k][0]] + aTempCb[aWinCondition[k][1]] + 
+                aTempCb[aWinCondition[k][2]] == -3) {
+                aChessboard[j] = 1;//change chessboard
+                aChessboard[i] = 0;
+                oUi.draw('ai', j);
+                checkOver();
+                return;
+              }
+            }
+            /*if(checkSame(aTempCbs, aTempCb)) {
+              break;
+            } else {
+              aTempCbs.push(aTempCb);
+            }*/
+
+            var nMax2 = 0, nMin2 = 0,
+              aTempCbMax = aTempCb.concat(),
+              aTempCbMin = aTempCb.concat();
+            for (var l = 8; l >= 0; l--) {
+              if (aTempCbMax[l] == 0) {
+                aTempCbMax[l] = 1;
+              }
+              if (aTempCbMin[l] == 0) {
+                aTempCbMin[l] = -1;
+              }
+            }
+            for (var m = aWinCondition.length - 1; m >= 0; m--) {
+              if (aTempCbMax[aWinCondition[m][0]] + aTempCbMax[aWinCondition[m][1]] + aTempCbMax[aWinCondition[m][2]] == 3)
+                nMax2++;
+              if (aTempCbMin[aWinCondition[m][0]] + aTempCbMin[aWinCondition[m][1]] + aTempCbMin[aWinCondition[m][2]] == -3) {
+                nMin2++;
+              }
+            }
+            var nDiff = nMax2 - nMin2;
+
+            if (nMin == null) {
+              nMin = nDiff;
+            } else {
+              nMin = nMin > nDiff ? nDiff : nMin;
+            }
+            aTempCb[j] = 0;
+          }
+
+          if (nMax == null) {
+            nMax = nMin;
+            nMaxSub = i;
+          } else {
+            if (nMax < nMin) {
+              nMax = nMin;
+              nMaxSub = i;
+            }
+          }
+          aChessboard[i] = 0;
+        }
+        aChessboard[nMaxSub] = 1;
+        oUi.draw('ai', nMaxSub);
+        checkOver();
+      } else {
+        
+      }
+    }
+  init();
+
+  return {
+    startGame: function() {
+      aChessboard = [0,0,0,0,0,0,0,0,0];
+      oUi.startGame();
+    },
+    nextStep: function(/*num*/nPlayerStep) {
+      nextStep();
+    },
+    setChessboard: function(/*num*/index, /*num*/val) {
+      aChessboard[index] = val;
+    },
+    getWinner: function() {
+      return winner;
+    }
+  }
+}
+</script>
