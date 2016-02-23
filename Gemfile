@@ -30,10 +30,7 @@ gem 'carrierwave'
 gem 'bootstrap_form'
 # Css & Js library
 gem 'bootstrap-sass' 
-# Hook locally mail 
-# Run deamon by call him in termilal like so : maicatcher
 # Then go  http://127.0.0.1:1080
-gem 'mailcatcher'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -44,6 +41,9 @@ gem 'mailcatcher'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Hook locally mail 
+  # Run deamon by call him in termilal like so : maicatcher
+  gem 'mailcatcher'
   # Access an PRY console on local server or by using <%= binding.pry %>  anywhere you need it (migration , seed ,views ,model etcetc)
   gem 'pry'
   # Add "continue" ,"next", "step" on pry (usefull in loops or stack exploration)
