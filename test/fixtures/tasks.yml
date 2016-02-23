@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  comment: MyString
+  duration: 2016-02-22 21:29:43
+  due_date: 2016-02-22 21:29:43
+  list_id: 
+
+two:
+  name: MyString
+  comment: MyString
+  duration: 2016-02-22 21:29:43
+  due_date: 2016-02-22 21:29:43
+  list_id: 
