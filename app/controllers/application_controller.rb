@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user! 
 
   def page_vide
+    
+    Resume.welcome_email(current_user).deliver_now
   	## /!\   Nb: definir ses pages statiques ici  c'est CACA!!!!   
   	## /!\   do\/ob  (pour les aveugles c'est le regard colère)
   end
