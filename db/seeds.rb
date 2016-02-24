@@ -8,8 +8,20 @@
 
 
 # Do NOT forget to avoid doublons when recreating entries (here with 'delete_all' method)
+Product.delete_all
+Provider.delete_all
 User.delete_all
 User.create!(email: 'admin@admin.com', password:"password", password_confirmation:"password")
+pict = File.open('/home/plombix/Proj/SimplonTest/pict/exemple .png')
+
+10.times do |i|
+	a =Provider.create(brand_name:"brand#{i}" , user_id: User.first.id)
+	i+=1
+	150.times do |j|
+		Product.create(name:"name#{j}" ,pict:pict , price: "99", provider_id:a.id)
+		j+=1
+	end
+end
 
 # # Use these variable to  populate text zones
 # text1 = "Donec commodo lacus arcu, vitae iaculis nisi pharetra accumsan. Phasellus nibh ligula, efficitur non metus sit amet, accumsan condimentum magna. Ut non cursus purus. Vestibulum eu lobortis enim. Vivamus mattis dictum tellus et tempus. Maecenas massa nunc, varius at risus eget, euismod varius ipsum. Nam accumsan, est sit amet interdum ultricies, tellus erat semper orci, in posuere urna dolor vitae erat. Aenean vel faucibus tortor. Morbi semper vulputate tortor, nec vulputate leo mollis quis. Vestibulum sit amet tincidunt risus. Vivamus purus nisl, porttitor eget tempor a, gravida eget eros. Fusce eget augue finibus, tincidunt nulla eu, rutrum sapien. Mauris sed semper orci."

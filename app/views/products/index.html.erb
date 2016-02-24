@@ -1,33 +1,32 @@
-<p id="notice"><%= notice %></p>
+<%color= [ '#FFDFFF',  "#FFDFF9",  "#FFDFEC",  "#FFDFE8",  "#FFDFDF",  "#FFDFD2",  "#FFDFC8",  "#FFDFBF",
+ "#FFBFFF",  '#FFBFF3',  "#FFBFDA",  "#FFBFD2",  "#FFBFBF",  "#FFBFA6",  "#FFBF91",  "#FFBF7F",
+ "#FF9FFF",  '#FF9FED',  "#FF9FC8",  "#FF9FBB",  "#FF9F9F",  "#FF9F7A",  "#FF9F5A",  "#FF9F3F",
+ "#FF8CFF",  '#FF8CEA',  "#FF8CBD",  "#FF8CAE",  "#FF8C8C",  "#FF8C60",  "#FF8C39",  "#FF8C19",
+ "#FF7FFF",  '#FF7FE7',  "#FF7FB6",  "#FF7FA5",  "#FF7F7F",  "#FF7F4E",  "#FF7F23",  "#FF7F00",
+ "#EE77EE",  '#EE77D8',  "#EE77AA",  "#EE779A",  "#EE7777",  "#EE7749",  "#EE7721",  "#EE7700",
+ "#CD66CD",  '#CD66BA',  "#CD6692",  "#CD6685",  "#CD6666",  "#CD663F",  "#CD661C",  "#CD6600",
+ "#8B458B",  '#8B457E',  "#8B4563",  "#8B455A",  "#8B4545",  "#8B452A",  "#8B4513",  "#8B4500",]%>
+    <% @providers.each do |provider| %>
+    <div class="alert alert-warning ">
+      <div class="text-center h1">
+        <%=provider.brand_name%>
+      </div>
 
-<h1>Listing Products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Pict</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.pict %></td>
-        <td><%= product.price %></td>
-        <td><%= product.description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    </div>
+    <% provider.products.each do |product| %>
+    <div  class="panel panel-default col-xs-2">
+    <div class="panel-heading h3">
+      <div><%= product.name %></div>
+    </div>
+    <div style=<%="background-color:"+"#{color.sample}"%> class="">
+    <div><%= image_tag(product.pict.thumb , class: "img img-rounded pull-right" , size: "40x40") %></div>
+        <div><%= link_to 'Show', product ,class: "btn btn-default" %></div>
+        <div><%= link_to 'Edit', edit_product_path(product) ,class: "btn btn-default"%></div>
+        <div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-default"%></div>
+    </div>
+    </div>
+        
+        
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
+    <% end %>
 <%= link_to 'New Product', new_product_path %>

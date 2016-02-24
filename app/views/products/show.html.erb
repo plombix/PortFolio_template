@@ -1,15 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="col-xs-offset-3 col-xs-6">
 
-<p>
+<p class="h1">
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
-
-<p>
+</div>
+<p class="text-center">
   <strong>Pict:</strong>
-  <%= @product.pict %>
+  <%= image_tag(@product.pict) %>
 </p>
-
+<div class="col-xs-offset-3 col-xs-6">
 <p>
   <strong>Price:</strong>
   <%= @product.price %>
@@ -20,5 +20,6 @@
   <%= @product.description %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_product_path(@product),class: "btn btn-default"  %> 
+<%= link_to 'Back', products_path ,class: "btn btn-default" %>
+</div>

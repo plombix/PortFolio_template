@@ -1,4 +1,5 @@
-<%= form_for(@product) do |f| %>
+<div class="col-xs-offset-3 col-xs-6">
+  <%= bootstrap_form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -10,24 +11,12 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :pict %><br>
-    <%= f.text_field :pict %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
+    <%= f.file_field :pict %>
     <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
     <%= f.text_area :description %>
-  </div>
-  <div class="actions">
     <%= f.submit %>
-  </div>
+
+
 <% end %>
+</div>
