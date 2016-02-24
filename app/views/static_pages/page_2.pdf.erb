@@ -1,0 +1,13 @@
+<%= wicked_pdf_stylesheet_link_tag "pdf_2.css" -%>
+
+
+<%col = 100505%>
+
+<%123.times do |x| %>
+<%style = "style='background-color:##{col};border-radius:70px'".html_safe%>
+<div class="col-xs-1 panel " <%=style%>>
+	utfasutfas
+	<%= col = col+ 150%>
+</div>
+<% end %>
+

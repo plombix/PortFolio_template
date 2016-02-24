@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :providers
   devise_for :users
   get 'page_vide' => 'application#page_vide'
+  get 'page_1' => 'static_pages#page_1'
+  get 'page_2' => 'static_pages#page_2'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
