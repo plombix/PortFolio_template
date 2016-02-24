@@ -34,10 +34,8 @@ gem 'bootstrap-sass'
 # Then go  http://127.0.0.1:1080
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
