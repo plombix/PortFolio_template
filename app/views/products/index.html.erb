@@ -7,12 +7,12 @@
  "#CD66CD",  '#CD66BA',  "#CD6692",  "#CD6685",  "#CD6666",  "#CD663F",  "#CD661C",  "#CD6600",
  "#8B458B",  '#8B457E',  "#8B4563",  "#8B455A",  "#8B4545",  "#8B452A",  "#8B4513",  "#8B4500",]%>
     <% @providers.each do |provider| %>
-    <div class="alert alert-warning ">
+    <div class="well">
       <div class="text-center h1">
         <%=provider.brand_name%>
       </div>
-
     </div>
+
     <% provider.products.each do |product| %>
     <div  class="panel panel-default col-xs-2">
     <div class="panel-heading h3">
@@ -26,7 +26,11 @@
     </div>
     </div>
         
-        
     <% end %>
+            <div class="well">
+                  <div class="text-center h1" style="color:white">
+        ___________________________________________________________________________
+                  </div>
+            </div>
     <% end %>
 <%= link_to 'New Product', new_product_path %>

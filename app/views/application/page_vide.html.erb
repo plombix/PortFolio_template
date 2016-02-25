@@ -2,11 +2,15 @@
 <%= link_to "catalog" , products_path, class: "btn btn-primary btn-block"%>
 
 <br/>
-<%=link_to "bidule", page_1_path , class: "btn btn-primary btn-block"%>
+<%= link_to "news_letter" , send_news_path,remote: true, class: "btn btn-primary btn-block"%>
+
+<br/>
 <br/>
 <%=link_to "cv pdf", page_1_path(:pdf) , class: "btn btn-primary btn-block"%>
 <br/>
+<%if false%>
+<%=link_to "bidule", page_1_path , class: "btn btn-primary btn-block"%>
 <%=link_to "same bidule with pdf's css but no extension", page_2_path , class: "btn btn-primary btn-block"%>
 <br/>
 <%=link_to "same bidule with pdf's css and PDF extension", page_2_path(:pdf) , class: "btn btn-primary btn-block"%>
-
+<% end %>

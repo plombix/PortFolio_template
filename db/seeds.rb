@@ -5,24 +5,38 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+a= ["admin@admin.com", 
+"admin1@admin.com", 
+"admin2@admin.com", 
+"admin3@admin.com", 
+"admin4@admin.com", 
+"admin5@admin.com", 
+"admin6@admin.com", 
+"admin7@admin.com", 
+"admin89@admin.com", 
+"admin99@admin.com"]
 
 # Do NOT forget to avoid doublons when recreating entries (here with 'delete_all' method)
 Product.delete_all
 Provider.delete_all
 User.delete_all
-User.create!(email: 'admin@admin.com', password:"password", password_confirmation:"password")
-pict = File.open('/home/plombix/Proj/SimplonTest/pict/exemple .png')
+
+pict = File.open(Rails.root.join("public/exemple.jpg"))
+
+
+10.times do |i|
+User.create!(email: a[i], password:"password", password_confirmation:"password",username:"bily", phone: "+54 06 06 06 06 06",subscribe:1,gender:1,adress:"16 rue rolo",citycode:"51000",city:"Chezmoitown")
+
+ end
 
 10.times do |i|
 	a =Provider.create(brand_name:"brand#{i}" , user_id: User.first.id)
 	i+=1
-	150.times do |j|
+	15.times do |j|
 		Product.create(name:"name#{j}" ,pict:pict , price: "99", provider_id:a.id)
 		j+=1
 	end
 end
-
 # # Use these variable to  populate text zones
 # text1 = "Donec commodo lacus arcu, vitae iaculis nisi pharetra accumsan. Phasellus nibh ligula, efficitur non metus sit amet, accumsan condimentum magna. Ut non cursus purus. Vestibulum eu lobortis enim. Vivamus mattis dictum tellus et tempus. Maecenas massa nunc, varius at risus eget, euismod varius ipsum. Nam accumsan, est sit amet interdum ultricies, tellus erat semper orci, in posuere urna dolor vitae erat. Aenean vel faucibus tortor. Morbi semper vulputate tortor, nec vulputate leo mollis quis. Vestibulum sit amet tincidunt risus. Vivamus purus nisl, porttitor eget tempor a, gravida eget eros. Fusce eget augue finibus, tincidunt nulla eu, rutrum sapien. Mauris sed semper orci."
 
