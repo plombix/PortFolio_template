@@ -29,11 +29,16 @@ User.create!(email: a[i], password:"password", password_confirmation:"password",
 
  end
 
+ clik=User.all.map { |e| e.id  } 
 10.times do |i|
 	a =Provider.create(brand_name:"brand#{i}" , user_id: User.first.id)
 	i+=1
 	15.times do |j|
-		Product.create(name:"name#{j}" ,pict:pict , price: "99", provider_id:a.id)
+		b = Product.create(name:"name#{j}" ,pict:pict , price: "99", provider_id:a.id)
+		Like.create(user_id: clik.sample, product_id: b.id)
+		Like.create(user_id: clik.sample, product_id: b.id)
+		Like.create(user_id: clik.sample, product_id: b.id)
+		Like.create(user_id: clik.sample, product_id: b.id)
 		j+=1
 	end
 end

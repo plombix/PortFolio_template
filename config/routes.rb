@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :products
   resources :providers
   devise_for :users
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get 'page_2' => 'static_pages#page_2'
 
   get 'users' => 'users#index'
+  get 'like' => 'likes#create'
   get "send_news" => "application#newsletter_send"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

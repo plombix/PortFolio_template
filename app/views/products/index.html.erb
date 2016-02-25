@@ -6,6 +6,7 @@
  "#EE77EE",  '#EE77D8',  "#EE77AA",  "#EE779A",  "#EE7777",  "#EE7749",  "#EE7721",  "#EE7700",
  "#CD66CD",  '#CD66BA',  "#CD6692",  "#CD6685",  "#CD6666",  "#CD663F",  "#CD661C",  "#CD6600",
  "#8B458B",  '#8B457E',  "#8B4563",  "#8B455A",  "#8B4545",  "#8B452A",  "#8B4513",  "#8B4500",]%>
+
     <% @providers.each do |provider| %>
     <div class="well">
       <div class="text-center h1">
@@ -21,6 +22,7 @@
     <div style=<%="background-color:"+"#{color.sample}"%> class="">
     <div><%= image_tag(product.pict.thumb , class: "img img-rounded pull-right" , size: "40x40") %></div>
         <div><%= link_to 'Show', product ,class: "btn btn-default" %></div>
+        <div><%= link_to 'like', like_path( user_id: current_user,product_id: product.id ) ,data: { disable_with: "Processsing..." },class: "btn btn-default", remote:  true %></div>
         <div><%= link_to 'Edit', edit_product_path(product) ,class: "btn btn-default"%></div>
         <div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-default"%></div>
     </div>

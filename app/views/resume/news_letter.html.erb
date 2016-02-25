@@ -6,10 +6,15 @@
   </head>
   <body>
     <h1>Great stufs this month!!<%= @user.username %></h1>
-    <p>
-      You have successfully signed up to example.com,
-      your email is: <%= @user.email %>.<br>
-    </p>
+     <div class="container-fluid">
+        <%@products.each do |x|%>
+        <% a =Product.find(x)%>
+      <div class="panel panel-primary col-xs-2">
+      <%=a.name%>
+      <div><%= image_tag(a.pict.thumb , class: "img img-rounded pull-right" , size: "40x40") %></div>
+      </div>
+    <% end %>
+     </div>
     <p>
       To login to the site, just follow this link: <%= @url %>.
     </p>
