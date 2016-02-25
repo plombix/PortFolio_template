@@ -12,9 +12,15 @@ class ApplicationController < ActionController::Base
   ### _Devise github    : github.com/plataformatec/devise
   ### _Devise blog/news : blog.plataformatec.com.br/tag/devise
   before_action :authenticate_user! 
+  def configure_permitted_parameters
+  devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username) }
+  devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :phone,:subscribe,:gender,:adress,:citycode,:city) }
+  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :phone,:subscribe,:gender,:adress,:citycode,:city) }
+end
 
   def page_vide
   	## /!\   Nb: definir ses pages statiques ici  c'est CACA!!!!   
   	## /!\   do\/ob  (pour les aveugles c'est le regard colère)
   end
 end
+

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+      <td><%=user.username%></td> 
+      <td><%=user.email%></td> 
+      <td><%=user.phone%></td>
+      <td><%=user.subscribe%></td>
+      <td><%=user.gender%></td>
+      <td>
+        
+      <div><%=user.adress%></div>
+      <div><%=user.citycode%> <%=user.city%></div>
+      </td>
+  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
