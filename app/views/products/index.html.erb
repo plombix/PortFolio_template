@@ -15,14 +15,14 @@
     </div>
 
     <% provider.products.each do |product| %>
-    <div  class="panel panel-default col-xs-2">
+    <div class="panel panel-default col-xs-2">
     <div class="panel-heading h3">
       <div><%= product.name %></div>
     </div>
     <div style=<%="background-color:"+"#{color.sample}"%> class="">
-    <div><%= image_tag(product.pict.thumb , class: "img img-rounded pull-right" , size: "40x40") %></div>
+    <div><%= image_tag(product.pict.thumb , class: "img img-rounded pull-right" , size: "1001x00") %></div>
         <div><%= link_to 'Show', product ,class: "btn btn-default" %></div>
-        <div><%= link_to 'like', like_path( user_id: current_user,product_id: product.id ) ,data: { disable_with: "Processsing..." },class: "btn btn-default", remote:  true %></div>
+            <%= render partial:"like" , locals: {product: product} %>
         <div><%= link_to 'Edit', edit_product_path(product) ,class: "btn btn-default"%></div>
         <div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-default"%></div>
     </div>

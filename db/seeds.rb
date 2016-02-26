@@ -15,7 +15,7 @@ a= ["admin@admin.com",
 "admin7@admin.com", 
 "admin89@admin.com", 
 "admin99@admin.com"]
-
+Like.delete_all
 # Do NOT forget to avoid doublons when recreating entries (here with 'delete_all' method)
 Product.delete_all
 Provider.delete_all
