@@ -1,0 +1,20 @@
+<div class="collapse navbar-collapse" id="navbar-collapse-1">
+  <ul class="nav navbar-nav navbar-left">
+    <li><%= link_to "groups" , groups_path, class: "btn btn-default btn-block"%>
+    </li>
+    <li><%= link_to "catalog" , products_path, class: "btn btn-default btn-block"%>
+    </li>
+    <li><%= link_to "news_letter" , send_news_path,remote: true, class: "btn btn-default btn-block"%></li>
+    <li><%=link_to "cv pdf", page_1_path(:pdf) , class: "btn btn-default btn-block"%></li>
+    <li><%=link_to "Todo", lists_path , class: "btn btn-default btn-block"%></li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li></li>
+    <% if current_user %>
+    <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
+    <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+    <li><%= link_to 'Login', new_user_session_path %></li>
+    <% end %>
+  </ul>
+</div>

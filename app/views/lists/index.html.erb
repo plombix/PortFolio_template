@@ -1,0 +1,63 @@
+<% content_for :head do %>
+  <title>Listing Lists</title>
+<% end %>
+<% content_for :nav do %>
+ <%= render partial: "navs/nav_links"%>
+<% end %>
+<h1>Todos</h1>
+<h5>Red color when due date is past or sum of tasks duration and current time   is over Deadline</h5>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Duration</th>
+      <th>Dead line</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lists.each do |list| %>
+      <%total_h = list.tasks.each.map{|x| x.duration.hour}.sum%>
+      <%total_m = list.tasks.each.map{|x| x.duration.min}.sum%>
+      <%total_sec = list.tasks.each.map{|x| x.duration.sec}.sum %>
+      <%a = Time.now.to_datetime%>
+      <%a+= total_h.hour%>
+      <% a+= total_m.minutes%>
+      <%  a+= total_m.seconds%>
+    <%color =  a < list.dead_line  ? "success" : "danger"%>
+    <tr class=<%="#{color}"%>>
+      <td><%= list.name %></td>
+      <td><%= list.description %></td>
+      <td><%= "Total: #{total_h}hours #{total_m} mins #{total_sec} secs" %></td>
+      <td><%= list.dead_line_list(list.dead_line) %></td>
+      <td><%= list.user.email %></td>
+      <td><%= link_to 'Show', list %></td>
+      <td><%= link_to 'ad a task', new_list_task_path(:list_id => list.id) %></td>
+      <td><%= link_to 'Edit', edit_list_path(list) %></td>
+      <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <%if list.tasks.count> 0%>
+    <%list.tasks.each do |task|%>
+    <%color = task.due_date.future? ? "success" : "danger"%>
+    <tr class=<%="#{color}"%>>
+
+      <td></td>
+      <td><%= task.name %></td>
+      <td><%= task.comment %></td>
+      <td><%= "#{task.duration.hour}H#{task.duration.min}M#{task.duration.sec}" %></td>
+      <td><%= task.dead_line(task.due_date) %></td>
+      <td> <%=link_to 'Edit', edit_list_task_path(list, task) %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% end %>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New List', new_list_path %>

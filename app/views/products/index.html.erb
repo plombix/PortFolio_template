@@ -6,12 +6,15 @@
 "#EE77EE",  '#EE77D8',  "#EE77AA",  "#EE779A",  "#EE7777",  "#EE7749",  "#EE7721",  "#EE7700",
 "#CD66CD",  '#CD66BA',  "#CD6692",  "#CD6685",  "#CD6666",  "#CD663F",  "#CD661C",  "#CD6600",
 "#8B458B",  '#8B457E',  "#8B4563",  "#8B455A",  "#8B4545",  "#8B452A",  "#8B4513",  "#8B4500",]%>
-<div class="group col-xs-12">
-    <%= render partial: "side_brand"%>
-    <div class=" col-xs-11">
-        <% @providers.each do |provider| %>
-        
-        <div id="side_brand" class=" row text-center h1" style="width:100%">
+<% content_for :nav do %>
+<%= render partial: "navs/nav_links"%>
+<% end %>
+   <%= link_to 'New Product', new_product_path, class: "btn btn-default" %>
+<div class=" col-xs-12">
+    <% @providers.each do |provider| %>
+    
+    <div>
+        <div  id="side_brand"class="col-xs-12  row text-center h1">
             <%=provider.brand_name%>
         </div>
         <% provider.products.each do |product| %>
@@ -25,6 +28,7 @@
             <%= render partial:"likes/like_button" , locals: {product: product, user: current_user} %>
         </div>
         <% end %>
-        <% end %>
     </div>
-    <%= link_to 'New Product', new_product_path %>
+    <% end %>
+    </div>
+

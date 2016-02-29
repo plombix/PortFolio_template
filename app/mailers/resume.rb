@@ -7,7 +7,7 @@ class Resume < ApplicationMailer
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
    def news_letter(user)
-    @products = user.products.all.map{ |x| [x.id , x.total_likes]}.uniq!.sort{|x,y|y[1]<=> x[1]}.map{|x| x[0]}.take(10)
+    @products = user.products.all.map{ |x| [x.id , x.total_likes]}.sort{|x,y|y[1]<=> x[1]}.map{|x| x[0]}.take(10)
     @user = user
     @url  = 'http://localhost:3000/login'
     mail(to: @user.email, subject: 'Great stufs this month!!')

@@ -1,0 +1,34 @@
+<% content_for :head do %>
+  <title>Todo</title>
+<% end %>
+<% content_for :nav do %>
+ <%= render partial: "navs/nav_links"%>
+<% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @list.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @list.description %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @list.duration %>
+</p>
+
+<p>
+  <strong>Dead line:</strong>
+  <%= @list.dead_line %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @list.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

@@ -1,0 +1,29 @@
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @task.name %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @task.comment %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @task.duration %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @task.due_date %>
+</p>
+
+<p>
+  <strong>List:</strong>
+  <%= @task.list %>
+</p>
+
+<%= link_to 'Edit', edit_list_task_path(params[:list_id] = @task.list, @task) %> |
+<%= link_to 'Back', tasks_path %>

@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :groups
   resources :products
   resources :providers
+  resources :tasks
+  resources :lists do
+    resources :tasks, :only => [:create, :new, :edit, :update]
+  end
   get 'page_vide' => 'application#page_vide'
   put 'remove_group/:id' => 'learners#alonize', as: :alonize
   get 'random'  => "groups#rand_populate"

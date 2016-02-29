@@ -1,0 +1,12 @@
+<% content_for :head do %>
+  <title>Todo</title>
+<% end %>
+<% content_for :nav do %>
+ <%= render partial: "navs/nav_links"%>
+<% end %>
+<h1>Editing List</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @list %> |
+<%= link_to 'Back', lists_path %>

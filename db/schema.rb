@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20160226191500) do
   add_index "likes", ["product_id"], name: "index_likes_on_product_id", using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
+  create_table "lists", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.time     "duration"
+    t.datetime "dead_line"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
+
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "pict"
@@ -67,6 +80,20 @@ ActiveRecord::Schema.define(version: 20160226191500) do
   end
 
   add_index "providers", ["user_id"], name: "index_providers_on_user_id", using: :btree
+
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "name"
+    t.string   "comment"
+    t.time     "duration"
+    t.datetime "due_date"
+    t.integer  "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tasks", ["list_id"], name: "index_tasks_on_list_id", using: :btree
+
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -97,6 +124,8 @@ ActiveRecord::Schema.define(version: 20160226191500) do
   add_foreign_key "learners", "groups"
   add_foreign_key "likes", "products"
   add_foreign_key "likes", "users"
+  add_foreign_key "lists", "users"
   add_foreign_key "products", "providers"
   add_foreign_key "providers", "users"
+  add_foreign_key "tasks", "lists"
 end

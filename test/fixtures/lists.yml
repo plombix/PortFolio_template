@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  duration: 2016-02-22 21:29:11
+  dead_line: 2016-02-22 21:29:11
+  user_id: 
+
+two:
+  name: MyString
+  description: MyText
+  duration: 2016-02-22 21:29:11
+  dead_line: 2016-02-22 21:29:11
+  user_id: 
