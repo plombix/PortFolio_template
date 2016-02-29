@@ -16,6 +16,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @task.due_date = @list.dead_line
   end
 
   # GET /tasks/1/edit

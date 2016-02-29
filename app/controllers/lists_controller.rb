@@ -15,6 +15,7 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
+    @list.user_id = current_user.id
   end
 
   # GET /lists/1/edit
