@@ -1,7 +1,0 @@
-  <div  id=<%=product.id%> >
-            <% if product.likes.where(user_id: current_user.id).count>0 %>
-        <div><%= link_to 'like', like_path( user_id: current_user,product_id: product.id ) ,data: { disable_with: "Nope!!!!" },class: "btn btn-primary", remote:  true %></div>
-        <%else%>
-        <div><%= link_to 'like', like_path( user_id: current_user,product_id: product.id ) ,data: { disable_with: "Processsing..." },class: "btn btn-default", remote:  true %></div>
-        <% end %>
-  </div>

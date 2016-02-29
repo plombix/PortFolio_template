@@ -1,15 +1,30 @@
-
+<pre>
+  /$$$$$$                                                                                   /$$$$$$$                           
+ /$$__  $$                                                                                 | $$__  $$                          
+| $$  \ $$ /$$$$$$$   /$$$$$$         /$$$$$$   /$$$$$$   /$$$$$$          /$$$$$$         | $$  \ $$  /$$$$$$  /$$   /$$      
+| $$  | $$| $$__  $$ /$$__  $$       |____  $$ /$$__  $$ /$$__  $$ /$$$$$$|____  $$ /$$$$$$| $$  | $$ |____  $$| $$  | $$      
+| $$  | $$| $$  \ $$| $$$$$$$$        /$$$$$$$| $$  \ $$| $$  \ $$|______/ /$$$$$$$|______/| $$  | $$  /$$$$$$$| $$  | $$      
+| $$  | $$| $$  | $$| $$_____/       /$$__  $$| $$  | $$| $$  | $$        /$$__  $$        | $$  | $$ /$$__  $$| $$  | $$      
+|  $$$$$$/| $$  | $$|  $$$$$$$      |  $$$$$$$| $$$$$$$/| $$$$$$$/       |  $$$$$$$        | $$$$$$$/|  $$$$$$$|  $$$$$$$      
+ \______/ |__/  |__/ \_______//$$$$$$\_______/| $$____/ | $$____/         \_______/        |_______/  \_______/ \____  $$      
+                             |______/         | $$      | $$                                                    /$$  | $$      
+                                              | $$      | $$                                                   |  $$$$$$/      
+                                              |__/      |__/                                                    \______/   
+    </pre>    
+<%= link_to "groups" , groups_path, class: "btn btn-primary btn-block"%>
+<br/>
 <%= link_to "catalog" , products_path, class: "btn btn-primary btn-block"%>
 
 <br/>
 <%= link_to "news_letter" , send_news_path,remote: true, class: "btn btn-primary btn-block"%>
 
 <br/>
-<br/>
+
 <%=link_to "cv pdf", page_1_path(:pdf) , class: "btn btn-primary btn-block"%>
 <br/>
 <%if false%>
 <%=link_to "bidule", page_1_path , class: "btn btn-primary btn-block"%>
+<br/>
 <%=link_to "same bidule with pdf's css but no extension", page_2_path , class: "btn btn-primary btn-block"%>
 <br/>
 <%=link_to "same bidule with pdf's css and PDF extension", page_2_path(:pdf) , class: "btn btn-primary btn-block"%>

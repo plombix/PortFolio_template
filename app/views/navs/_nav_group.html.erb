@@ -1,0 +1,35 @@
+  <div class="collapse navbar-collapse" id="navbar-group">
+
+      <ul class="nav navbar-nav navbar-right">
+    <%if user_signed_in?%>
+    <li>
+    	
+    <%= link_to "Log out" ,destroy_user_session_path ,method: :delete, class: "btn btn-danger  btn-block" %>
+    </li>
+    <li>
+    	
+    <%= link_to 'Destroy', user_registration_path, :confirm => 'Are you sure you want to destroy your account?', :method => :delete , class: "btn btn-danger  btn-block" %>
+    </li>
+    <%else%>
+    <li>
+    	
+    <%=link_to "Formateur" , new_user_session_path, class: "btn btn-default btn-block" %>
+    </li>
+    <%if User.count == 0%>
+    <li>
+     <%=link_to "New Formateur" , new_user_registration_path, class: "btn btn-default  btn-block" %>
+    	
+    </li>
+    <% end %>
+    <%end%>
+      </ul>
+  </div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @learner.name %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @learner.notes %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @learner.role %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @learner.group %>
+</p>
+
+<%= link_to 'Edit', edit_learner_path(@learner) %> |
+<%= link_to 'Back', learners_path %>

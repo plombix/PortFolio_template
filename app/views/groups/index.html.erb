@@ -1,0 +1,164 @@
+<% content_for :head do %>
+  <title>Groupes</title>
+<% end %>
+<% content_for :nav do %>
+ <%= render partial: "navs/nav_group"%>
+<% end %>
+<div class="group col-xs-12">
+<div id="side_brand"class="col-xs-1">
+  S<br/>
+  I<br/>
+  M<br/>
+  P<br/>
+  L<br/>
+  O<br/>
+  N<br/>
+</div>
+  <div class=" col-xs-10">
+<div id="group">
+<% @groups.each do |group| %>
+<div class="col-xs-3 panel panel-primary">
+  <div class="panel-heading">
+    <div class="title"><%=group.name %>
+    <div class=" pull-right"> <%= group.room %></div></div>
+  </div>
+  <div class="panel-body">
+    
+    <div class="title"> <%= group.task %></div>
+    <% group.learners.sort_by { |h| h[:role] }.reverse.each do |stud| %>
+    <div class="col-xs-12 well well-sm">
+    <div id="stud" class="pull-left h2"><%= stud.name%><%if user_signed_in?%>
+  <%= best_in_place stud, :role , :as => :select, :collection => {"0" => " ✓" ,"1"=> " Sensei"} %>
+
+    <%else%>
+    <%= stud.role == 0 ? " ✓" :  " Sensei" %>
+    <% end %>
+    </div>
+    <div class="pull-right"><%= link_to "X" , alonize_path(stud),method: :put, remote: true, class: "btn btn-danger" %></div>
+
+    </div>
+    <% end %>
+      <% if user_signed_in?%>  
+    <div class="col-xs-12"><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs btn-block" %></div>
+      <% end %>
+  </div>
+</div>
+<% end %>
+
+<div id="alone">
+  <%Learner.group_less.each do |alone|%>
+    <div class="panel panel-info col-xs-12">
+      <div class="text-left h2">
+        <%= alone.name%>
+      </div>
+       <div class="h1">
+       <span>
+       Put me in :   
+       </span>
+       <span>
+         <%= best_in_place_if user_signed_in? , alone, :group_id, :as => :select, :collection => @groups.all.map {|s| [s.id, s.name]} %>
+       </span>
+      </div>     
+      <% if user_signed_in?%>  
+      <div class="pull-right h4">
+        <%= link_to "Delete" , alone, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block"  %>
+      </div>
+      <% end %>
+    </div>
+<% end %>
+</div
+</div>
+ <% if user_signed_in?%>  
+<button   class=" panel panel-primary panel-heading glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" style=" font-size:50px; font-weight:bolder;">
+</button>
+<button   class=" panel panel-primary panel-heading glyphicon glyphicon-user" data-toggle="modal" data-target="#new_simplonian" style=" font-size:50px; font-weight:bolder;">
+</button>
+<%end%>
+<%= link_to '' , random_path,class: 'panel panel-primary panel-heading glyphicon glyphicon-retweet',style:" font-size:60px; font-weight:bolder;" ,remote: :true %>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Group</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(@group= Group.new) do |f| %>
+          <% if @group.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+              <ul>
+              <% @group.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+          <div class="field">
+            <%= f.label :room %><br>
+            <%= f.text_field :room %>
+          </div>
+          <div class="field">
+            <%= f.label :task %><br>
+            <%= f.text_field :task %>
+          </div>
+          <div class="actions">
+            <%= f.submit  class: "btn btn-default" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="new_simplonian" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Simplonian</h4>
+      </div>
+      <div class="modal-body">
+<%= form_for(@learner = Learner.new) do |f| %>
+  <% if @learner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@learner.errors.count, "error") %> prohibited this learner from being saved:</h2>
+
+      <ul>
+      <% @learner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+      <% content_for :foot do %>
+<% end %>

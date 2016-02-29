@@ -1,0 +1,1 @@
+$("#group").load('/groups  #group')

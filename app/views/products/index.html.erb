@@ -1,38 +1,30 @@
 <%color= [ '#FFDFFF',  "#FFDFF9",  "#FFDFEC",  "#FFDFE8",  "#FFDFDF",  "#FFDFD2",  "#FFDFC8",  "#FFDFBF",
- "#FFBFFF",  '#FFBFF3',  "#FFBFDA",  "#FFBFD2",  "#FFBFBF",  "#FFBFA6",  "#FFBF91",  "#FFBF7F",
- "#FF9FFF",  '#FF9FED',  "#FF9FC8",  "#FF9FBB",  "#FF9F9F",  "#FF9F7A",  "#FF9F5A",  "#FF9F3F",
- "#FF8CFF",  '#FF8CEA',  "#FF8CBD",  "#FF8CAE",  "#FF8C8C",  "#FF8C60",  "#FF8C39",  "#FF8C19",
- "#FF7FFF",  '#FF7FE7',  "#FF7FB6",  "#FF7FA5",  "#FF7F7F",  "#FF7F4E",  "#FF7F23",  "#FF7F00",
- "#EE77EE",  '#EE77D8',  "#EE77AA",  "#EE779A",  "#EE7777",  "#EE7749",  "#EE7721",  "#EE7700",
- "#CD66CD",  '#CD66BA',  "#CD6692",  "#CD6685",  "#CD6666",  "#CD663F",  "#CD661C",  "#CD6600",
- "#8B458B",  '#8B457E',  "#8B4563",  "#8B455A",  "#8B4545",  "#8B452A",  "#8B4513",  "#8B4500",]%>
-
-    <% @providers.each do |provider| %>
-    <div class="well">
-      <div class="text-center h1">
-        <%=provider.brand_name%>
-      </div>
-    </div>
-
-    <% provider.products.each do |product| %>
-    <div class="panel panel-default col-xs-2">
-    <div class="panel-heading h3">
-      <div><%= product.name %></div>
-    </div>
-    <div style=<%="background-color:"+"#{color.sample}"%> class="">
-    <div><%= image_tag(product.pict.thumb , class: "img img-rounded pull-right" , size: "1001x00") %></div>
-        <div><%= link_to 'Show', product ,class: "btn btn-default" %></div>
-            <%= render partial:"like" , locals: {product: product} %>
-        <div><%= link_to 'Edit', edit_product_path(product) ,class: "btn btn-default"%></div>
-        <div><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-default"%></div>
-    </div>
-    </div>
+"#FFBFFF",  '#FFBFF3',  "#FFBFDA",  "#FFBFD2",  "#FFBFBF",  "#FFBFA6",  "#FFBF91",  "#FFBF7F",
+"#FF9FFF",  '#FF9FED',  "#FF9FC8",  "#FF9FBB",  "#FF9F9F",  "#FF9F7A",  "#FF9F5A",  "#FF9F3F",
+"#FF8CFF",  '#FF8CEA',  "#FF8CBD",  "#FF8CAE",  "#FF8C8C",  "#FF8C60",  "#FF8C39",  "#FF8C19",
+"#FF7FFF",  '#FF7FE7',  "#FF7FB6",  "#FF7FA5",  "#FF7F7F",  "#FF7F4E",  "#FF7F23",  "#FF7F00",
+"#EE77EE",  '#EE77D8',  "#EE77AA",  "#EE779A",  "#EE7777",  "#EE7749",  "#EE7721",  "#EE7700",
+"#CD66CD",  '#CD66BA',  "#CD6692",  "#CD6685",  "#CD6666",  "#CD663F",  "#CD661C",  "#CD6600",
+"#8B458B",  '#8B457E',  "#8B4563",  "#8B455A",  "#8B4545",  "#8B452A",  "#8B4513",  "#8B4500",]%>
+<div class="group col-xs-12">
+    <%= render partial: "side_brand"%>
+    <div class=" col-xs-11">
+        <% @providers.each do |provider| %>
         
-    <% end %>
-            <div class="well">
-                  <div class="text-center h1" style="color:white">
-        ___________________________________________________________________________
-                  </div>
+        <div id="side_brand" class=" row text-center h1" style="width:100%">
+            <%=provider.brand_name%>
+        </div>
+        <% provider.products.each do |product| %>
+        <div class="panel panel-default col-xs-2" style=<%="background-color:"+"#{color.sample}"%>>
+            <div class="panel-heading h3 "><%= product.name %> </div>
+            <div class="col-xs-12 col-md-8">
+                anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié.
             </div>
-    <% end %>
-<%= link_to 'New Product', new_product_path %>
+            <div class="col-xs-12 col-md-4"><%= image_tag(product.pict_url(:thumb) , class: "img img-rounded pull-right" , size: "100x100") %></div>
+            
+            <%= render partial:"likes/like_button" , locals: {product: product, user: current_user} %>
+        </div>
+        <% end %>
+        <% end %>
+    </div>
+    <%= link_to 'New Product', new_product_path %>

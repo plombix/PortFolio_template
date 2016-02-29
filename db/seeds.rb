@@ -35,13 +35,36 @@ User.create!(email: a[i], password:"password", password_confirmation:"password",
 	i+=1
 	15.times do |j|
 		b = Product.create(name:"name#{j}" ,pict:pict , price: "99", provider_id:a.id)
-		Like.create(user_id: clik.sample, product_id: b.id)
-		Like.create(user_id: clik.sample, product_id: b.id)
-		Like.create(user_id: clik.sample, product_id: b.id)
-		Like.create(user_id: clik.sample, product_id: b.id)
 		j+=1
 	end
 end
+Learner.delete_all
+Group.delete_all
+	Learner.create!(name: "Guillaume",notes: "random_stuffs")
+	Learner.create!(name: "Sophie",notes: "random_stuffs")
+	Learner.create!(name: "Jade",notes: "random_stuffs")
+	Learner.create!(name: "Anas",notes: "random_stuffs")
+	Learner.create!(name: "Najib",notes: "random_stuffs")
+	Learner.create!(name: "Marc",notes: "random_stuffs")
+	Learner.create!(name: "Antoine",notes: "random_stuffs")
+	Learner.create!(name: "Thierry",notes: "random_stuffs")
+	Learner.create!(name: "Anthony",notes: "random_stuffs")
+	Learner.create!(name: "Thomas",notes: "random_stuffs")
+	Learner.create!(name: "Vincent",notes: "random_stuffs")
+	Learner.create!(name: "Alexis",notes: "random_stuffs")
+	Learner.create!(name: "Julie",notes: "random_stuffs")
+	Learner.create!(name: "Sabrina",notes: "random_stuffs")
+	Learner.create!(name: "Bertrand",notes: "random_stuffs")
+	Learner.create!(name: "Naima",notes: "random_stuffs")
+	Learner.create!(name: "Othman",notes: "random_stuffs")
+	Learner.create!(name: "Caroline",notes: "random_stuffs")
+	Learner.create!(name: "Didier",notes: "random_stuffs")
+	Learner.create!(name: "Than",notes: "random_stuffs")
+	Learner.create!(name: "Manoël",notes: "random_stuffs")
+Group.create(name:"Sax", task:"group", room:"003")
+Group.create(name:"Tambour", task:"group", room:"002")
+Group.create(name:"Guitare", task:"group", room:"001")
+
 # # Use these variable to  populate text zones
 # text1 = "Donec commodo lacus arcu, vitae iaculis nisi pharetra accumsan. Phasellus nibh ligula, efficitur non metus sit amet, accumsan condimentum magna. Ut non cursus purus. Vestibulum eu lobortis enim. Vivamus mattis dictum tellus et tempus. Maecenas massa nunc, varius at risus eget, euismod varius ipsum. Nam accumsan, est sit amet interdum ultricies, tellus erat semper orci, in posuere urna dolor vitae erat. Aenean vel faucibus tortor. Morbi semper vulputate tortor, nec vulputate leo mollis quis. Vestibulum sit amet tincidunt risus. Vivamus purus nisl, porttitor eget tempor a, gravida eget eros. Fusce eget augue finibus, tincidunt nulla eu, rutrum sapien. Mauris sed semper orci."
 

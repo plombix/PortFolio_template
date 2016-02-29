@@ -41,6 +41,9 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -78,6 +81,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.9.1)
     execjs (2.6.0)
+    flipclockjs-rails (0.7.7)
+      jquery-rails (>= 1.0.17)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -125,6 +130,8 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -214,12 +221,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  best_in_place (~> 3.0.1)
   better_errors
   bootstrap-sass
   bootstrap_form
   carrierwave
   coffee-rails (~> 4.1.0)
   devise
+  flipclockjs-rails (~> 0.7.7)
   jbuilder (~> 2.0)
   jquery-rails
   mailcatcher
@@ -229,6 +238,7 @@ DEPENDENCIES
   pry-rails
   pry-remote
   pry-stack_explorer
+  quiet_assets
   rails (= 4.2.2)
   rmagick
   sass-rails (~> 5.0)

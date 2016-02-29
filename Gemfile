@@ -43,6 +43,7 @@ gem 'bootstrap-sass'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'quiet_assets'
   # Hook locally mail 
   # Run deamon by call him in termilal like so : maicatcher
   gem 'mailcatcher'
@@ -62,3 +63,5 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'flipclockjs-rails', '~> 0.7.7'
+gem 'best_in_place', '~> 3.0.1'

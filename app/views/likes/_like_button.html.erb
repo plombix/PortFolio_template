@@ -1,0 +1,17 @@
+
+ <div  class="btn-group col-xs-12">
+                <span><%= link_to 'Show', product ,class: "btn btn-default" %></span>
+                <% if product.likes.where(user_id: user).exists? %>
+                <span id='<%=product.id%>' class="btn btn-primary">
+                    LIKED!!!
+                </span>
+                <%else%>
+                <span id='<%=product.id%>' >
+                    <%= link_to 'like', like_path( user_id: current_user,product_id: product.id ),class: "btn btn-default", remote:  true %>
+                </span>
+                <% end %>
+                
+                <span><%= link_to 'Edit', edit_product_path(product) ,class: "btn btn-default"%></span>
+                <span><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-default"%></span>
+            </div>
+

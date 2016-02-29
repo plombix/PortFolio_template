@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Learners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Notes</th>
+      <th>Role</th>
+      <th>Group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @learners.each do |learner| %>
+      <tr>
+        <td><%= learner.name %></td>
+        <td><%= learner.notes %></td>
+        <td><%= learner.role %></td>
+        <td><%= learner.group %></td>
+        <td><%= link_to 'Show', learner %></td>
+        <td><%= link_to 'Edit', edit_learner_path(learner) %></td>
+        <td><%= link_to 'Destroy', learner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Learner', new_learner_path %>

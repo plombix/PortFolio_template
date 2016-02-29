@@ -11,7 +11,19 @@
 // about supported directives.
 //
 //= require jquery
+//= require best_in_place
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree .
+//= require flipclock.min
+$(document).ready(function() {
+    $('.best_in_place').best_in_place();
+    $('.your-clock').FlipClock({
+        clockFace: 'TwentyFourHourClock'
+    });
+})
+if (!window.console) console = {};
+console.log = console.log || function(){};
+console.warn = console.warn || function(){};
+console.error = console.error || function(){};
+console.info = console.info || function(){};

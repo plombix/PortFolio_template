@@ -1,0 +1,43 @@
+// Place all the styles related to the learners controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.group {
+
+}
+
+.panel {
+	background-color:#B9B377;
+	margin-left:10px;
+
+}
+.title {
+	font-size:50px;
+	white-space: nowrap;
+ 	 overflow: hidden;
+ 	 text-overflow: ellipsis;
+
+}
+#side_brand {
+	font-size:200px;
+	line-height: 80%;
+	color:#B0B2C1;
+	border-line:4px;
+	font-weight:bolder;
+
+}
+#stud {
+	 white-space: nowrap;
+ 	 overflow: hidden;
+ 	 text-overflow: ellipsis;
+}
+
+pre{
+font-size:30px;
+background-color:#9EA2C3;
+	font-weight:bolder;
+	color:#FFFFFF;
+}
+#navbar-group{
+	background-color:#9EA2C3;
+}
